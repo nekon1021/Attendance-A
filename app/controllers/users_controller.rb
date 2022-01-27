@@ -7,7 +7,9 @@ class UsersController < ApplicationController
 
   def index
     @users = User.paginate(page: params[:page])
+    
   end
+  
 
   def show
     @worked_sum = @attendances.where.not(started_at: nil).count
@@ -57,9 +59,10 @@ class UsersController < ApplicationController
     end
     redirect_to users_url
   end
-
+  
+  
   private
-
+  
     def user_params
       params.require(:user).permit(:name, :email, :department, :password, :password_confirmation)
     end
