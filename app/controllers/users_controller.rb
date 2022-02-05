@@ -6,14 +6,11 @@ class UsersController < ApplicationController
   before_action :set_one_month, only: :show
 
   def index
-    if params[:q] && params[:q].reject { |key, value| value.blank? }.present?
-      @q = User.ransack(search_params, activated_true: true)
-      @title = "Search Result"
+    if params[:search].present?
+      @users = User.paginate(page: params[:page]).search(params[:search])
     else
-      @q = User.ransack(activated_true: true)
-      @title = "All users"
+      @users = User.paginate(page: params[:page])
     end
-    @users = @q.result.paginate(page: params[:page])
   end
   
 
