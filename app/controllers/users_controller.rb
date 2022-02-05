@@ -6,11 +6,8 @@ class UsersController < ApplicationController
   before_action :set_one_month, only: :show
 
   def index
-    if params[:search].present?
-      @users = User.paginate(page: params[:page]).search(params[:search])
-    else
-      @users = User.paginate(page: params[:page])
-    end
+    @users = User.all
+    @users = @users.where('title LIKE ?', "%#{params[:search]}%") if params[:search].present?
   end
   
 
@@ -74,7 +71,4 @@ class UsersController < ApplicationController
       params.require(:user).permit(:department, :basic_time, :work_time)
     end
     
-    def search_params
-      params.require(:q).permit(:name_cont)
-    end
 end
