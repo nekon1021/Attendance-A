@@ -7,7 +7,7 @@ class UsersController < ApplicationController
 
   def index
     @users = User.all
-    @users = @users.where('title LIKE ?', "%#{params[:search]}%") if params[:search].present?
+    @users = @users.where('name LIKE ?', "%#{params[:search]}%") if params[:search].present?
   end
   
 

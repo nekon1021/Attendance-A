@@ -4,7 +4,7 @@
 <div class="pull-right">
   ユーザー名検索
   <%= form_tag(users_path, method: "get") do %>
-    <%= text_field_tag :name %>
+    <%= text_field_tag :search %>
     <%= submit_tag "検索", name:nil, class: "btn btn-primary" %>
   <% end %>
 </div>
