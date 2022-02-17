@@ -18,4 +18,19 @@ class Attendance < ApplicationRecord
       errors.add(:started_at, "より早い退勤時間は無効です") if started_at > finished_at
     end
   end
+  
+  def started_at_rounded
+    round_minutes(started_at)
+  end
+  
+  def finished_at_rounded
+    round_minutes(finished_at)
+  end
+  
+  private
+  
+  def round_minutes(time)
+    return nil unless time
+    Time.zone.local(time.year, time.month, time.day, time.hour, (time.min/15 * 15), 0)
+  end
 end
