@@ -1,13 +1,17 @@
 <% provide(:title, 'All Users') %>
 <h1>全てのユーザー</h1>
-
-<div class="pull-right">
-  ユーザー名検索
-  <%= form_tag(users_path, method: "get") do %>
-    <%= text_field_tag :search %>
-    <%= submit_tag "検索", name:nil, class: "btn btn-primary" %>
-  <% end %>
-</div>
+  
+<div class="col-md-10 col-md-offset-1">
+  <%= will_paginate %>
+  
+  <div class="pull-right">
+      ユーザー名検索
+      <%= form_tag(users_path, method: "get") do %>
+        <%= text_field_tag :search %>
+        <%= submit_tag "検索", name:nil, class: "btn btn-primary" %>
+      <% end %>
+    </div>
+  
 
 <div class="col-md-10 col-md-offset-1">
   <table class="table table-condensed table-hover" id="table-users">
@@ -49,7 +53,8 @@
       </tr>
     <% end %>
   </table>
-  
+  <%= will_paginate %>
+</div>
 </div>
 
 <!--モーダルウインドウ表示-->
