@@ -7,9 +7,13 @@
         <%= l(@first_day, format: :middle) %>時間管理表
         <%= link_to "→", user_path(date: @first_day.next_month), class: "btn btn-default" %>
       </td>
-      <td colspan="3">指定勤務時間：<%= format_basic_info(@user.work_time) %></td>
+      <td colspan="3">
+        指定勤務開始時間：<%= format_basic_info(@user.work_time) %>
+        <br>
+        指定勤務終時間：<%= format_basic_info(@user.work_time) %>
+      </td>
       <td>基本時間：<%= format_basic_info(@user.basic_time) %></td>
-      <td>月初日 <%= l(@first_day, format: :short) %></td>
+      <td>初日 <%= l(@first_day, format: :short) %></td>
     </tr>
 
     <tr>
@@ -18,7 +22,7 @@
       <td>コード</td>
       <td></td>
       <td>出勤日数 <%= @worked_sum %>日</td>
-      <td>月末日 <%= l(@last_day, format: :short) %></td>
+      <td>締め <%= l(@last_day, format: :short) %></td>
     </tr>
   </table>
 </div>
