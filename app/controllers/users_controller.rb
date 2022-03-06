@@ -69,7 +69,10 @@ class UsersController < ApplicationController
         flash[:danger] = "閲覧権限がありません。"
         redirect_to(root_url)
       end
-    end
+  end
+  
+  def change_log
+  end
   
   private
   

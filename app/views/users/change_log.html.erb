@@ -1,0 +1,21 @@
+<% provide(:title, "勤怠ログ") %>
+<h1>勤怠ログ</h1>
+<div class="pull-left">
+  <%= form_tag(users_path, method: "get") do %>
+    <%= submit_tag "検索", name:nil, class: "btn btn-default" %>
+  <% end %>
+</div>
+
+<table class="table table-bordered table-condensed user-table">
+  <tbody>
+    <tr>
+      <td>日付</td>
+      <td colspan="2">変更前出社時間</td>
+      <td colspan="2">変更前退社時間</td>
+      <td colspan="2">変更後出社時間</td>
+      <td colspan="2">変更後退社時間</td>
+      <td>指示者</td>
+      <td>承認日</td>
+    </tr>
+  </tbody>
+</table>
