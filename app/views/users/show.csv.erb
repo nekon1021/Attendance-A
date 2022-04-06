@@ -1,0 +1,14 @@
+<%== CSV.generate do |csv|
+    # NOTE: 列が追加された場合はココに追加
+    csv << %w(日付 出社 退社 備考)
+    @attendances.each do |attendance|
+      # NOTE: 列が追加された場合はココにも追加
+      csv << [
+        attendance.worked_on,
+        attendance.started_at_rounded,
+        attendance.finished_at_rounded,
+        attendance.note,
+      ]
+    end
+  end
+%>

@@ -1,21 +1,24 @@
+<%
+  select_begin_year = 2012
+  select_end_year = Date.current.year
+%>
 <% provide(:title, "勤怠ログ") %>
 <h1>勤怠ログ</h1>
 <div class="pull-left">
-  <%= form_tag(users_path, method: "get") do %>
+  <%= form_tag(change_log_user_path(current_user), method: "get", remote: true, id: 'search_change_log_form') do %>
+    <%= select_tag('y', options_for_select((select_begin_year..select_end_year).map{|i| ["#{i}年", i] }, @first_day.year)) %>
+    <%= select_tag('m', options_for_select((1..12).map{|i| ["#{i}月", i] }, @first_day.month)) %>
     <%= submit_tag "検索", name:nil, class: "btn btn-default" %>
   <% end %>
 </div>
 
-<table class="table table-bordered table-condensed user-table">
-  <tbody>
-    <tr>
-      <td>日付</td>
-      <td colspan="2">変更前出社時間</td>
-      <td colspan="2">変更前退社時間</td>
-      <td colspan="2">変更後出社時間</td>
-      <td colspan="2">変更後退社時間</td>
-      <td>指示者</td>
-      <td>承認日</td>
-    </tr>
-  </tbody>
-</table>
+<div id ='change_logs'>
+  <%= render 'change_logs' %>
+</div>
+
+<script>
+  $('#search_change_log_form').on('ajax:success', function(date) {
+    var body = date.detail[2].response
+    $('#change_logs').html(body)
+  })
+</script>

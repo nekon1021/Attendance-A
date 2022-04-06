@@ -1,3 +1,4 @@
+require 'csv'
 class UsersController < ApplicationController
   before_action :set_user, only: [:show, :edit, :update, :destroy, :edit_basic_info, :update_basic_info]
   before_action :logged_in_user, only: [:index, :edit, :update, :destroy, :edit_basic_info, :update_basic_info]
@@ -14,7 +15,12 @@ class UsersController < ApplicationController
   
 
   def show
-    @worked_sum = @attendances.where.not(started_at: nil).count
+    respond_to do |format|
+      format.html {
+        @worked_sum = @attendances.where.not(started_at: nil).count
+      }
+      format.csv
+    end
   end
 
   def new
@@ -72,9 +78,22 @@ class UsersController < ApplicationController
   end
   
   def change_log
+    @attendances = load_attendances
+    if request.xhr?
+      render '_change_logs', layout: false
+    else
+      render
+    end
   end
   
   private
+  
+    def load_attendances
+      @first_day = params[:y] && params[:m] ?
+        Date.new(params[:y].to_i, params[:m].to_i, 1) : Date.current.beginning_of_month
+      @last_day = @first_day.end_of_month
+      current_user.attendances.where(worked_on: @first_day..@last_day).order(:worked_on)
+    end
   
     def user_params
       params.require(:user).permit(:name, :email, :department, :password, :password_confirmation)

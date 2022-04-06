@@ -1,0 +1,24 @@
+<table class="table table-bordered table-condensed user-table">
+  <tbody>
+      <tr>
+        <td>日付</td>
+        <td colspan="2">変更前出社時間</td>
+        <td colspan="2">変更前退社時間</td>
+        <td colspan="2">変更後出社時間</td>
+        <td colspan="2">変更後退社時間</td>
+        <td>指示者</td>
+        <td>承認日</td>
+      </tr>
+    <% @attendances.each do |attendance| %>
+    <tr>
+      <td><%= attendance.worked_on %></td>
+      <td colspan="2"><%= attendance.id %></td>
+      <td colspan="2"></td>
+      <td colspan="2"></td>
+      <td colspan="2"></td>
+      <td></td>
+      <td></td>
+    </tr>
+    <% end %>
+  </tbody>
+</table>
