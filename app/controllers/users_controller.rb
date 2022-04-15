@@ -1,6 +1,6 @@
 require 'csv'
 class UsersController < ApplicationController
-  before_action :set_user, only: [:show, :edit, :update, :destroy, :edit_basic_info, :update_basic_info]
+  before_action :set_user, only: [:show, :edit, :update, :destroy, :edit_basic_info, :update_basic_info, :edit_orverwork_request]
   before_action :logged_in_user, only: [:index, :edit, :update, :destroy, :edit_basic_info, :update_basic_info]
   before_action :correct_user, only: [:edit, :update]
   before_action :admin_user, only: [:destroy, :edit_basic_info, :update_basic_info]
@@ -84,6 +84,20 @@ class UsersController < ApplicationController
     else
       render
     end
+  end
+  
+  def edit_orverwork_request
+    @day = Date.parse(params[:day])
+    @attendance = @user.attendances.find_by(worked_on: @day)
+    @attendances = []
+  end
+  
+  def update_overwork_request
+    @day = Date.parse(params[:day])
+    @attendance = @user.attendances.find_by(worked_on: @day)
+    params[:attendance][:next_day] == '1' ? Time.now.tomorrow : Time.now
+    flash[:success] = "残業申請しました。"
+    redirect_to @user
   end
   
   private
