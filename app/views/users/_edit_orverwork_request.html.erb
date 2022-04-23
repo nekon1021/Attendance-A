@@ -5,7 +5,7 @@
         <button type="button" class="close" data-dismiss="modal" aria-label>
           <span aria-hidden="true">&times;</span>
         </button>
-        <h1 class="modal-title">残業申請</h1>
+        <h1 class="modal-title">【残業申請】</h1>
       </div>
       <div class="modal-body">
         <div class="row">
@@ -36,8 +36,21 @@
                     <td><%= attendance.text_field :business_process, class: "form-control" %></td>
                     <td><%= attendance.select :cofirmation, [["なし", "なし"], ["申請中", "申請中"], ["承認", "承認"], ["否認", "否認"]], class: "form-controle" %></td>
                   <% end %>
-                <% end %>
-                </tbody>
+                  <% end %>
+              </tbody>
+              
+              <tfoot>
+                <tr>
+                  <td></td>
+                  <td colspan="2"></td>
+                  <td></td>
+                  <td></td>
+                  <td></td>
+                  <td></td>
+                  <td></td>
+                </tr>
+              </tfoot>
+              
             </table>
             
             <div class="center">
