@@ -34,7 +34,7 @@
                   <%= working_times(day.started_at, day.finished_at) %>
                 <% end %>
               </td>
-              <td><%= attendance.text_field :note, class: "form-control", placeholder: "変更理由を記載してください。" %></td>
+              <td><%= f.text_field :note, class: "form-control", placeholder: "変更理由を記載してください。" %></td>
               <td>
                 <%= f.select :name, ['上長A', '上長B'], {include_blank: '上長を選択してください。'}, class: "form-control" %>
             </tr>
