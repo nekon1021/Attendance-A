@@ -28,15 +28,15 @@
                 <td><%= attendance.time_field :started_at, class: "form-control" %></td>
                 <td><%= attendance.time_field :finished_at, class: "form-control" %></td>
               <% end %>
-              <td></td>
+              <td><%= attendance.check_box :user_id,  class: "form-control" %></td>
               <td>
                 <% if day.started_at.present? && day.finished_at.present? %>
                   <%= working_times(day.started_at, day.finished_at) %>
                 <% end %>
               </td>
-              <td><%= f.text_field :note, class: "form-control", placeholder: "変更理由を記載してください。" %></td>
+              <td><%= attendance.text_field :note, class: "form-control", placeholder: "変更理由を記載してください。" %></td>
               <td>
-                <%= f.select :name, ['上長A', '上長B'], {include_blank: '上長を選択してください。'}, class: "form-control" %>
+                <%= attendance.select :note, ['上長A', '上長B'], {include_blank: '上長を選択してください。'}, class: "form-control" %>
               </td>
             </tr>
           <% end %>

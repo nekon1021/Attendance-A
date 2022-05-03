@@ -92,24 +92,24 @@
           <td>
             <%= l(day.started_at_rounded, format: :minute) if day.started_at_rounded.present? %>
           </td>
-          <td></td>
-          <td></td>
           <td>
             <%= l(day.finished_at_rounded, format: :hour) if day.finished_at_rounded.present? %>
           </td>
           <td>
             <%= l(day.finished_at_rounded, format: :minute) if day.finished_at_rounded.present? %>
           </td>
-          <td></td>
           <td>
             <% if day.started_at_rounded.present? && day.finished_at_rounded.present? %>
               <%= str_times = working_times(day.started_at_rounded, day.finished_at_rounded) %>
               <% @total_working_times = @total_working_times.to_f + str_times.to_f %>
             <% end %>
           </td>
+          <td></td>
+          <td></td>
+          <td></td>
+          <td></td>
+          <td></td>
           <td><%= day.note %></td>
-          <td></td>
-          <td></td>
           
         </tr>
       <% end %>
