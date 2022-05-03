@@ -42,14 +42,15 @@
               <tfoot>
                 <tr>
                   <td><%= Date.today.strftime('%m/%d') %></td>
-                  <td><%= %w(日 月 火 水 木 土)[Date.today.wday] %></td>
+                  <td><%= %w(日 月 火 水 木 金 土)[Date.today.wday] %></td>
                   <td></td>
                   <td></td>
                   <td>
-                    <%= text_field :note, class: "form-control", placeholder: "記入してください。" %>
+                     <%= f.text_field :note, class: "form-control", placeholder: "変更理由を記載してください。" %>
                   </td>
                   <td>
-                    <%= f.select :name, ['上長A', '上長B'], {include_blank: '上長を選択してください。'}, class: "form-control" %>
+                     <%= f.select :name, ['上長A', '上長B'], {include_blank: '上長を選択してください。'}, class: "form-control" %>
+                  </td>
                   </td>
                 </tr>
               </tfoot>
