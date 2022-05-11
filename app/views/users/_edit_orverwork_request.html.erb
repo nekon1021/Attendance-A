@@ -49,7 +49,7 @@
                      <%= attendance.text_field :note, class: "form-control", placeholder: "変更理由を記載してください。" %>
                   </td>
                   <td>
-                     <%= attendance.select :note, ['上長A', '上長B'], {include_blank: '上長を選択してください。'}, class: "form-control" %>
+                     <%= attendance.select :superior, ['上長A', '上長B'], {include_blank: '上長を選択してください。'}, class: "form-control" %>
                   </td>
                   </td>
                 </tr>
