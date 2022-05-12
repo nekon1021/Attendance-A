@@ -43,14 +43,10 @@
                 <tr>
                   <td><%= Date.today.strftime('%m/%d') %></td>
                   <td><%= %w(日 月 火 水 木 金 土)[Date.today.wday] %></td>
-                  <td></td>
-                  <td></td>
-                  <td>
-                     <%= attendance.text_field :note, class: "form-control", placeholder: "変更理由を記載してください。" %>
-                  </td>
-                  <td>
-                     <%= attendance.select :superior, ['上長A', '上長B'], {include_blank: '上長を選択してください。'}, class: "form-control" %>
-                  </td>
+                  <td><%= time_field :finished_at, class: "form-control" %></td>
+                  <td><%= check_box :next_day, id: "next_day" %></td>
+                  <td><%= text_field :business_process, class: "form-control" %></td>
+                  <td><%= select_form :superior, class: "form_control", ["なし", "上長A", "上長B"] %></td>
                   </td>
                 </tr>
               </tfoot>
