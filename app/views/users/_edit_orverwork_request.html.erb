@@ -46,7 +46,7 @@
                   <td><%= time_field :finished_at, class: "form-control" %></td>
                   <td><%= check_box :next_day, id: "next_day" %></td>
                   <td><%= text_field :business_process, class: "form-control" %></td>
-                  <td><%= select_form :superior, class: "form_control", ["なし", "上長A", "上長B"] %></td>
+                  <td><%= select_tag :superior, options_for_select(["上長A", "上長B"]), include_blank: "なし", class: "form_control" %></td>
                   </td>
                 </tr>
               </tfoot>

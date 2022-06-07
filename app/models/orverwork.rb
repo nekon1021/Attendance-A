@@ -1,0 +1,2 @@
+class Orverwork < ApplicationRecord
+end

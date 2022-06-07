@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20220511114854) do
+ActiveRecord::Schema.define(version: 20220605151530) do
 
   create_table "attendances", force: :cascade do |t|
     t.date "worked_on"
@@ -23,6 +23,27 @@ ActiveRecord::Schema.define(version: 20220511114854) do
     t.boolean "next_day", default: false, null: false
     t.string "superior"
     t.index ["user_id"], name: "index_attendances_on_user_id"
+  end
+
+  create_table "orverworks", force: :cascade do |t|
+    t.integer "user_id", null: false
+    t.date "worked_on", null: false
+    t.datetime "finished_at", null: false
+    t.text "note", null: false
+    t.integer "superior_id", null: false
+    t.datetime "approved_at"
+    t.datetime "applied_at", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["superior_id"], name: "index_orverworks_on_superior_id"
+    t.index ["user_id"], name: "index_orverworks_on_user_id"
+  end
+
+  create_table "posts", force: :cascade do |t|
+    t.string "title"
+    t.string "description"
+    t.integer "pages"
+    t.boolean "disabled"
   end
 
   create_table "projects", force: :cascade do |t|
