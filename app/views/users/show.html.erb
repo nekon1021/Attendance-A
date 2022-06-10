@@ -27,8 +27,14 @@
     </tr>
   </table>
 </div>
+ 
 <div class="btn-users-show">
-  <%= link_to "勤怠を編集", attendances_edit_one_month_user_path(date: @first_day), class: "btn btn-default" %>
+  <% if %>
+    <br><%= link_to "【所属長申請のお知らせ】", "#" %>
+    <br><%= link_to "【勤務変更のお知らせ】", "#" %>
+    <br><%= link_to "【残業申請のお知らせ】", "#" %>
+  <% end %>
+  <br><%= link_to "勤怠を編集", attendances_edit_one_month_user_path(date: @first_day), class: "btn btn-default" %>
   <%= link_to "CSV出力", user_path(format: :csv, date: @first_day), class: "btn btn-default" %>
 </div>
 <div class="btn-users-show">
